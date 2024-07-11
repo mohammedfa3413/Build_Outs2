@@ -17,11 +17,16 @@ function Calculator() {
     }  
 
     const handelresult = ()=>{
+      if(input === ""){
+          setresult("Error");
+      }else{
         try {
-            setresult(eval(input));
-          } catch (error) {
-            setresult('Error', error);
-          }
+          setresult(eval(input));
+        } catch (error) {
+          setresult('Error', error);
+        }
+      }
+        
     }
   
   return (
