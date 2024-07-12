@@ -50,6 +50,8 @@ function LoginPage() {
             value={username}
             onChange={handleChangeUser}
             title={username === "" ? 'Please fill out this field' : ""}
+            placeholder='username'
+            required
           />
         </label>
 
@@ -60,6 +62,8 @@ function LoginPage() {
             value={password}
             onChange={handleChangePassword}
             title={password === "" ? 'Please fill out this field' : ""}
+            placeholder='password'
+            required
           />
         </label>
 
