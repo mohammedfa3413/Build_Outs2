@@ -1,73 +1,69 @@
-import React from 'react'
-import styles from "./LoginPage.module.css"
-import {useState} from "react"
+import React, { useState } from 'react';
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
-        const [username , setusername] = useState("");
-        const [password , setpassword] = useState("");
-        const [message, setMessage] = useState("");
-        const [submited, setsubmited] =useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
+  const handleChangeUser = (e) => {
+    setUsername(e.target.value);
+  };
 
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        const handelonchangeuser = (e) => {
-            // console.log(e.target.value)
-            setusername(e.target.value)
-        }
-
-        const handelonchangepassword = (e) =>{
-            // console.log(e.target.value);
-            setpassword(e.target.value)
-        }
-
-
-        const handelsubmit = (e) =>{
-            e.preventDefault()
-            
-
-        if(username === "user" && password === "password"){
-                setMessage("")
-                setsubmited(true)
-        }else{
-            
-            setMessage("Invalid username or password")
-            setsubmited(false);
-        }  
-
-        }
-
-
+    if (username === "user" && password === "password") {
+      setMessage("");
+      setSubmitted(true);
+    } else {
+      setMessage("Invalid username or password");
+      setSubmitted(false);
+    }
+  };
 
   return (
     <div className={styles.container}>
-        <h1 className={styles.h1}>Login Page</h1>
+      <h1 className={styles.h1}>Login Page</h1>
 
-       <div>{submited ? (
-        <p>{`welcome ${username}!`}</p>
-        ):""}</div>
+      <div>
+        {submitted ? (
+          <p>{`Welcome, ${username}!`}</p>
+        ) : ""}
+      </div>
 
+      <form className={styles.form} onSubmit={handleSubmit}>
+        {message && <p className="error">{message}</p>}
 
-        <form className={styles.form} onSubmit={handelsubmit}>
-        {message && <p className='error'>{message}</p>}
+        <label htmlFor="username">
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={handleChangeUser}
+            title={username === "" ? 'Please fill out this field' : ""}
+          />
+        </label>
 
-            <label htmlFor='username'>
-                UserName:
-                    <input type='text' value={username} onChange={handelonchangeuser} title={username === "" ? 'Please fill out this field' : ""}/>
-            </label>
+        <label htmlFor="password">
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={handleChangePassword}
+            title={password === "" ? 'Please fill out this field' : ""}
+          />
+        </label>
 
-            <label htmlFor='password'>
-                Password:
-                    <input type='password' value={password}  onChange={handelonchangepassword} title={password === "" ? 'Please fill out this field' : ""}/>
-            </label>
-
-            <button className={styles.button} type='submit'>Submit</button>
-        </form>
-
-       
-      
+        <button className={styles.button} type="submit">Submit</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;
