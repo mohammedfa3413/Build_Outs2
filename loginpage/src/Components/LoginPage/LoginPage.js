@@ -51,14 +51,14 @@ function LoginPage() {
         <form className={styles.form} onClick={handelsubmit}>
         {message && <p className='error'>{message}</p>}
 
-            <label>
+            <label htmlFor='username'>
                 UserName:
                     <input type='text' value={username} onChange={handelonchangeuser} title={username === "" ? 'Please fill out this field' : ""}/>
             </label>
 
-            <label>
+            <label htmlFor='password'>
                 Password:
-                    <input type='text' value={password} onChange={handelonchangepassword} title={password === "" ? 'Please fill out this field' : ""}/>
+                    <input type='text' value={password}  onChange={handelonchangepassword} title={password === "" ? 'Please fill out this field' : ""}/>
             </label>
 
             <button className={styles.button} type='submit'>Submit</button>
