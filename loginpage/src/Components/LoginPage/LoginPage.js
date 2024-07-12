@@ -5,7 +5,8 @@ import {useState} from "react"
 function LoginPage() {
         const [username , setusername] = useState("");
         const [password , setpassword] = useState("");
-        const [message, setMessage] = useState("")
+        const [message, setMessage] = useState("");
+        const [submited, setsubmited] =useState(false);
 
 
 
@@ -26,16 +27,13 @@ function LoginPage() {
             
 
         if(username === "user" && password === "password"){
-            return ( 
-                setMessage("Welcome, user!")
-            )
+                setMessage("")
+                setsubmited(true)
         }else{
             
             setMessage("Invalid username or password")
-        }
-
-    
-          
+            setsubmited(false);
+        }  
 
         }
 
@@ -44,7 +42,15 @@ function LoginPage() {
   return (
     <div className={styles.container}>
         <h1 className={styles.h1}>Login Page</h1>
+
+       <div>{submited ? (
+        <p>{`wlcome ${username}!`}</p>
+        ):""}</div>
+
+
         <form className={styles.form} onClick={handelsubmit}>
+        {message && <p className='error'>{message}</p>}
+
             <label>
                 UserName:
                     <input type='text' value={username} onChange={handelonchangeuser} title={username === "" ? 'Please fill out this field' : ""}/>
@@ -58,7 +64,7 @@ function LoginPage() {
             <button className={styles.button} type='submit'>Submit</button>
         </form>
 
-        <p>{message}</p>
+       
       
     </div>
   )
