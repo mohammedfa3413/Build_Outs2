@@ -18,7 +18,10 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username === "user" && password === "password") {
+    if (username === "" || password === "") {
+      setMessage("Username and password cannot be empty");
+      setSubmitted(false);
+    } else if (username === "user" && password === "password") {
       setMessage("");
       setSubmitted(true);
     } else {
@@ -38,7 +41,7 @@ function LoginPage() {
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        {message && <p className="error">{message}</p>}
+        {message && <p className={styles.error}>{message}</p>}
 
         <label htmlFor="username">
           Username:
