@@ -44,11 +44,11 @@ function LoginPage() {
         <h1 className={styles.h1}>Login Page</h1>
 
        <div>{submited ? (
-        <p>{`wlcome ${username}!`}</p>
+        <p>{`welcome ${username}!`}</p>
         ):""}</div>
 
 
-        <form className={styles.form} onClick={handelsubmit}>
+        <form className={styles.form} onSubmit={handelsubmit}>
         {message && <p className='error'>{message}</p>}
 
             <label htmlFor='username'>
@@ -58,7 +58,7 @@ function LoginPage() {
 
             <label htmlFor='password'>
                 Password:
-                    <input type='text' value={password}  onChange={handelonchangepassword} title={password === "" ? 'Please fill out this field' : ""}/>
+                    <input type='password' value={password}  onChange={handelonchangepassword} title={password === "" ? 'Please fill out this field' : ""}/>
             </label>
 
             <button className={styles.button} type='submit'>Submit</button>
